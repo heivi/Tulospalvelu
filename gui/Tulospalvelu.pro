@@ -19,8 +19,10 @@ CONFIG += serialport # Qt 4
 
 #QT += serialport     # Qt 5
 
+#CONFIG += app_bundle
+
 # Linux 64bit
-INCLUDEPATH += /usr/lib64/qt4/include
+#INCLUDEPATH += /usr/lib64/qt4/include
 
 
 SOURCES += main.cpp\

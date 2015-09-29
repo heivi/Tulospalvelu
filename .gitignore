@@ -7,3 +7,6 @@ Makefile
 *.o
 *.db
 *.sqlite3
+.DS_Store
+build*
+Tulospalvelu.app

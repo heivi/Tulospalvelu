@@ -143,7 +143,16 @@ void MainWindow::connectDatabase()
 #else
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-    db.setDatabaseName("tulospalvelu.sqlite3");
+    // Show info box of saving location of database
+    INFO(this, "Tietokanta tallennettaan kohteeseen " + QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/tulospalvelu.sqlite3");
+
+    // Create app data folder if not exists
+    QDir dir(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+    if (!dir.exists()) {
+        QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+    }
+    // set database location and filename
+    db.setDatabaseName(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/tulospalvelu.sqlite3");
 #endif
 
     if (!db.open()) {

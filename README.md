@@ -5,7 +5,7 @@ Riippuvuudet
 ------------
 
  - **Qt 4**
- - git://gitorious.org/qt/qtserialport.git
+ - https://wiki.qt.io/Qt_Serial_Port
 
 Ristikäännös
 ------------
@@ -22,3 +22,14 @@ Fedora-paketit
 --------------
 
 yum install git mingw-w64-tools minwg32*
+
+MacOS-käännös
+-------------
+
+Kun Qt4 ja QtSerialPort asennettu, niin käännöksen pitäisi onnistua. Jotta Tulospalvelu.app
+toimisi ilman Qt:n ja QtSerialPortin asennusta, voidaan dynaamiset kirjastot/frameworkit
+kopioida .app -bundleen bash-skriptillä bundle_dyn_libs_osx.sh. [Lisätietoa](http://doc.qt.io/qt-4.8/deployment-mac.html)
+
+### Virheitä
+
+ - Hiiren kakkospainikkeen painallus kaataa ohjelman (ainakin tulosten selauksessa)
