@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql xml
+QT += serialport
+QT += core gui sql xml
+QT += widgets
 
 TARGET = Tulospalvelu
 TEMPLATE = app
@@ -14,16 +16,6 @@ TEMPLATE = app
 
 # Uncomment to use serialport
 DEFINES += USE_SERIAL
-
-CONFIG += serialport # Qt 4
-
-#QT += serialport     # Qt 5
-
-#CONFIG += app_bundle
-
-# Linux 64bit
-#INCLUDEPATH += /usr/lib64/qt4/include
-
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -52,7 +44,9 @@ SOURCES += main.cpp\
     dialog/asetuksetdialog.cpp \
     model/ratamodel.cpp \
     model/rastimodel.cpp \
-    dialog/sarjavalintadialog.cpp
+    dialog/sarjavalintadialog.cpp \
+    dialog/yhteislahtodialog.cpp \
+    delegate/tulospalveludelegate.cpp
 
 HEADERS  += mainwindow.h \
     widget/testemitreaderwidget.h \
@@ -81,7 +75,9 @@ HEADERS  += mainwindow.h \
     dialog/asetuksetdialog.h \
     model/ratamodel.h \
     model/rastimodel.h \
-    dialog/sarjavalintadialog.h
+    dialog/sarjavalintadialog.h \
+    dialog/yhteislahtodialog.h \
+    delegate/tulospalveludelegate.h
 
 FORMS    += mainwindow.ui \
     widget/testemitreaderwidget.ui \
@@ -96,7 +92,8 @@ FORMS    += mainwindow.ui \
     form/vuokraemititform.ui \
     form/tulosnayttoform.ui \
     dialog/asetuksetdialog.ui \
-    dialog/sarjavalintadialog.ui
+    dialog/sarjavalintadialog.ui \
+    dialog/yhteislahtodialog.ui
 
 
 

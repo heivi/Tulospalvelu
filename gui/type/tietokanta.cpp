@@ -45,6 +45,7 @@ tables
         "   nimi TEXT NOT NULL,"
         "   tapahtuma INTEGER NOT NULL,"
         "   sakkoaika INTEGER NOT NULL DEFAULT -1,"
+        "   yhteislahto DATETIME,"
         "   FOREIGN KEY (tapahtuma) REFERENCES tapahtuma(id)"
         "       ON UPDATE CASCADE"
         "       ON DELETE CASCADE,"
@@ -759,4 +760,16 @@ QString Tietokanta::getVersion(const QString &table)
     }
 
     return query.value(0).toString();
+}
+
+void Tietokanta::backup(const QString &toTarget)
+{
+#ifdef USE_MYSQL
+    Q_UNUSED(toTarget);
+    // FIXME
+#else
+    QSqlDatabase::database().commit();
+
+    QFile::copy("tulospalvelu.sqlite3", toTarget);
+#endif
 }

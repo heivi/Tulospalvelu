@@ -1,8 +1,10 @@
 #ifndef SARJATFORM_H
 #define SARJATFORM_H
 
-#include <QtGui>
+#include <QtWidgets>
 #include <QtSql>
+
+#include "delegate/tulospalveludelegate.h"
 
 #include "form/utilform.h"
 
@@ -42,8 +44,12 @@ private slots:
 
     void on_rastiPoistaButton_clicked();
 
+    void on_yhteislahtoButton_clicked();
+
 private:
     Ui::SarjatForm *ui;
+
+    TulospalveluDelegate *m_delegate;
 
     QVariant m_sarjaId;
 
