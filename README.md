@@ -4,8 +4,7 @@ Tulospalvelu
 Riippuvuudet
 ------------
 
- - **Qt 4**
- - https://wiki.qt.io/Qt_Serial_Port
+ - **Qt 5**
 
 Ristikäännös
 ------------
@@ -26,9 +25,7 @@ yum install git mingw-w64-tools minwg32*
 MacOS-käännös
 -------------
 
-Kun Qt4 ja QtSerialPort asennettu, niin käännöksen pitäisi onnistua. Jotta Tulospalvelu.app
-toimisi ilman Qt:n ja QtSerialPortin asennusta, voidaan dynaamiset kirjastot/frameworkit
-kopioida .app -bundleen bash-skriptillä bundle_dyn_libs_osx.sh. [Lisätietoa](http://doc.qt.io/qt-4.8/deployment-mac.html)
+Tavallisesti Qt Creatorilla, testattu Qt 5.7:lla.
 
 ### Virheitä
 

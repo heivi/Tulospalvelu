@@ -1,3 +1,6 @@
+#include <iostream>
+#include <iomanip>
+
 #include "serialemitreaderwidget.h"
 #include "ui_serialemitreaderwidget.h"
 
@@ -64,18 +67,21 @@ void SerialEmitReaderWidget::readSerial()
     bool head_ok = false;
 
     while (m_serialPort.bytesAvailable() >= 2 && !head_ok) {
+
         QByteArray head = m_serialPort.peek(2);
         quint8 *head_data = (quint8 *)head.data();
 
         head_ok = (head_data[0] == (0xFF ^ 0xDF) && head_data[1] == (0xFF ^ 0xDF));
-
+        //head_ok = true;
         if (!head_ok) {
             // Tyhjennetään puskuria 1 tavun verran
             m_serialPort.read(1).toHex();
+            qDebug() << "head not ok: " << QString(head.toHex());
         }
     }
 
     if (m_serialPort.bytesAvailable() >= 217) {
+        qDebug() << "Reading data";
         QByteArray dataArray = m_serialPort.read(217);
         quint8 *data = (quint8 *)dataArray.data();
         quint8 tarkiste1 = 0;

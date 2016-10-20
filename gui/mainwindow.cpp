@@ -144,15 +144,15 @@ void MainWindow::connectDatabase()
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
     // Show info box of saving location of database
-    INFO(this, "Tietokanta tallennettaan kohteeseen " + QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/tulospalvelu.sqlite3");
+    INFO(this, "Tietokanta tallennettaan kohteeseen " + QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/tulospalvelu.sqlite3");
 
     // Create app data folder if not exists
-    QDir dir(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+    QDir dir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
     if (!dir.exists()) {
-        QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+        QDir().mkpath(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
     }
     // set database location and filename
-    db.setDatabaseName(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/tulospalvelu.sqlite3");
+    db.setDatabaseName(QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/tulospalvelu.sqlite3");
 #endif
 
     if (!db.open()) {
@@ -642,9 +642,9 @@ void MainWindow::on_actionPikan_pp_imet_triggered()
     m_pikanappaimetForm->show();
 }
 
-void MainWindow::on_tabWidget_currentChanged(QWidget *arg1)
+void MainWindow::on_tabWidget_currentChanged(int index)
 {
-    TulosForm *f = qobject_cast<TulosForm*>(arg1);
+    TulosForm *f = qobject_cast<TulosForm*>(ui->tabWidget->currentWidget());
 
     if (f) {
         f->checkFocus();

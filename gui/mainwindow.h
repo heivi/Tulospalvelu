@@ -102,7 +102,7 @@ private slots:
     void on_actionTuo_tulokset_triggered();
     void on_actionPikan_pp_imet_triggered();
     void on_actionTulosten_selaus_triggered();
-    void on_tabWidget_currentChanged(QWidget *arg1);
+    void on_tabWidget_currentChanged(int index);
     void on_actionVuokraEmitit_triggered();
     void on_actionTulosnaytto_triggered();
     void on_actionAsetukset_triggered();
